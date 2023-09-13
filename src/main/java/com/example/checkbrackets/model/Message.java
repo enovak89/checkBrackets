@@ -13,10 +13,6 @@ public class Message {
         this.isCorrect = isCorrect;
     }
 
-    public String getText() {
-        return text;
-    }
-
     public Boolean getIsCorrect() {
         return isCorrect;
     }

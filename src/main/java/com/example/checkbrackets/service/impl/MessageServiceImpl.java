@@ -20,7 +20,6 @@ public class MessageServiceImpl implements MessageService {
     public MessageAnswer checkBrackets(MessageText messageText) {
         Message message = messageMapper.mapToEntity(messageText);
         message.setIsCorrect(true);
-        MessageAnswer messageAnswer = messageMapper.mapToDto(message);
-        return messageAnswer;
+        return messageMapper.mapToDto(message);
     }
 }
