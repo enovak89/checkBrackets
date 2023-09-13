@@ -17,7 +17,7 @@ public class Message {
         return text;
     }
 
-    public Boolean getCorrect() {
+    public Boolean getIsCorrect() {
         return isCorrect;
     }
 }

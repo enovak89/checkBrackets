@@ -1,5 +1,6 @@
 package com.example.checkbrackets.controller;
 
+import com.example.checkbrackets.dto.MessageAnswer;
 import com.example.checkbrackets.dto.MessageText;
 import com.example.checkbrackets.service.MessageService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,8 +19,8 @@ public class MessageController {
     }
 
     @PostMapping("/checkBrackets")
-    public Boolean checkBrackets(@RequestBody MessageText messageText) {
-        return messageService.checkBrackets();
+    public MessageAnswer checkBrackets(@RequestBody MessageText messageText) {
+        return messageService.checkBrackets(messageText);
     }
 
 }
