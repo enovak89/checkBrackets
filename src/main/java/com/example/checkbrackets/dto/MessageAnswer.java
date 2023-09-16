@@ -3,7 +3,7 @@ package com.example.checkbrackets.dto;
 public class MessageAnswer {
     private Boolean isCorrect;
 
-    public Boolean getCorrect() {
+    public Boolean getIsCorrect() {
         return isCorrect;
     }
 

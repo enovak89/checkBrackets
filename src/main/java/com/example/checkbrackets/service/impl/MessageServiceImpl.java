@@ -8,6 +8,11 @@ import com.example.checkbrackets.model.Message;
 import com.example.checkbrackets.service.MessageService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.List;
+
 @Service
 public class MessageServiceImpl implements MessageService {
 
@@ -19,11 +24,33 @@ public class MessageServiceImpl implements MessageService {
     }
 
     public MessageAnswer checkBrackets(MessageText messageText) {
-        if (messageText.getText() == null || messageText.getText().isEmpty()) {
-            throw new EmptyTextException("Text must be not empty");
+        String text = messageText.getText();
+        if (text == null || text.isEmpty()) {
+            throw new EmptyTextException();
         }
         Message message = messageMapper.mapToEntity(messageText);
-        message.setIsCorrect(true);
+        message.setIsCorrect(textChecker(text));
         return messageMapper.mapToDto(message);
+    }
+
+    public Boolean textChecker(String text) {
+        Deque<Character> deque = new LinkedList<>();
+        for (int i = 0; i < text.length(); i++) {
+            if (text.charAt(i) == '(') {
+                if (deque.contains('(')) {
+                    return false;
+                } else {
+                    deque.addFirst(text.charAt(i));
+                }
+            } else if (deque.isEmpty() && text.charAt(i) == ')') {
+                return false;
+            } else if (text.charAt(i) != ')' && !deque.isEmpty() && deque.getFirst() == '(' && text.charAt(i) != ' ') {
+                deque.addLast(text.charAt(i));
+            }
+            if (text.charAt(i) == ')' && deque.size() > 1) {
+                deque.clear();
+            }
+        }
+        return deque.isEmpty();
     }
 }
