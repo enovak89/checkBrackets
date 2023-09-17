@@ -1,6 +1,6 @@
 # Описаение проекта
 Данный проект реализован с целью участия в конкурсе https://beautifulcode.sber.ru/
-### Спецификация API находится здесь [checkBrackets.YAML](.checkBrackets.YAML)<br>
+### Спецификация API находится здесь [checkBrackets.YAML](checkBrackets.YAML)<br>
 
 ### Зависимости и техническая часть
 - SpringFramework
