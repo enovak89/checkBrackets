@@ -1,0 +1,49 @@
+openapi: 3.0.1
+info:
+  title: API for checking brackets
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Generated server url
+paths:
+  /api/checkBrackets:
+    post:
+      tags:
+        - message-controller
+      operationId: checkBrackets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MessageText'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MessageAnswer'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/EmptyTextExceptionDTO'
+components:
+  schemas:
+    EmptyTextExceptionDTO:
+      type: object
+      properties:
+        exceptionMessage:
+          type: string
+    MessageText:
+      type: object
+      properties:
+        text:
+          type: string
+    MessageAnswer:
+      type: object
+      properties:
+        isCorrect:
+          type: boolean
