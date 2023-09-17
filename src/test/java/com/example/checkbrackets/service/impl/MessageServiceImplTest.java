@@ -79,7 +79,6 @@ class MessageServiceImplTest {
     void checkEmptyTextBracketsWithException() {
         MessageText correctText = new MessageText();
         correctText.setText(INCORRECT_EMPTY_TEXT);
-        Message message = new Message();
 
         assertThrows(EmptyTextException.class, () -> messageServiceImpl.checkBrackets(correctText));
     }
