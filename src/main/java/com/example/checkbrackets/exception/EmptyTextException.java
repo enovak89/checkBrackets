@@ -1,5 +1,5 @@
 package com.example.checkbrackets.exception;
 
-public class EmptyTextException extends RuntimeException{
+public class EmptyTextException extends RuntimeException {
 
 }
